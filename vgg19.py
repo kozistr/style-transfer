@@ -58,7 +58,7 @@ class VGG19(object):
         weight = np.transpose(weight, (1, 0, 2, 3))  # (h, w, in_c, out_c) to (h, w, in_c, out_c)
         bias = bias.reshape(-1)
 
-        return weight, bias.
+        return weight, bias
 
     def build(self, img):
         x = {}  # network
