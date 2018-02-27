@@ -47,7 +47,7 @@ class VGG19(object):
         self.weights = scipy.io.loadmat(vgg19_file_name)['layers'][0]
 
         self.input_img = input_image
-        self.vgg19 = self.build(self.input_img)
+        self.vgg19_net = self.build(self.input_img)
 
     def _get_weight(self, idx, layer_name):
         weight = self.weights[idx][0][0][2][0][0]
