@@ -2,7 +2,6 @@ from PIL import Image, ImageOps
 from urllib.request import urlretrieve
 
 import numpy as np
-import scipy.misc
 import os
 
 
@@ -32,7 +31,6 @@ def image_resize(img_path, width, height, save=True):
     """ Resizing image with given size (h, w) """
 
     image = Image.open(img_path)  # open image
-
     image = ImageOps.fit(image, (width, height), Image.ANTIALIAS)  # resize
 
     if save:
@@ -53,7 +51,8 @@ def image_resize(img_path, width, height, save=True):
 def image_save(img, img_path):
     img = np.clip(img[0], 0., 255.).astype('uint8')
 
-    scipy.misc.imsave(img_path, img)
+    with open(img_path, 'wb') as f:
+        Image.fromarray(img).save(f, 'jpeg')
 
 
 def generate_noise_image(content_image, width, height, noise_range=20., noise_ratio=.6):
