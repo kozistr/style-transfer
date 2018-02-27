@@ -42,7 +42,7 @@ class VGG19(object):
             'relu5_3', 'conv5_4', 'relu5_4'
         )
 
-        self.mean_pixels = np.array([123.68, 116.779, 103.939])
+        self.mean_pixels = np.array([123.68, 116.779, 103.939]).reshape((1, 1, 1, 3))
 
         self.weights = scipy.io.loadmat(vgg19_file_name)['layers'][0]
 
