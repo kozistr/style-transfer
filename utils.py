@@ -71,7 +71,7 @@ def setup_dir():
         except OSError:
             pass
 
-    dirs = ['content', 'checkpoints', 'style', 'outputs', 'graphs']
+    dirs = ['contents', 'checkpoints', 'styles', 'outputs', 'graphs']
 
     for dir_ in dirs:
         make_dir(dir_)
