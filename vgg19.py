@@ -60,12 +60,6 @@ class VGG19(object):
 
         return weight, bias
 
-    def pre_processing(self, img):
-        return img - self.mean_pixels
-
-    def post_processing(self, img):
-        return img + self.mean_pixels
-
     def build(self, img):
         x = {}  # network
         net = img
