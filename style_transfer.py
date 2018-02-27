@@ -144,7 +144,6 @@ class StyleTransfer:
                 if (idx + 1) % self.logging_steps == 0:
                     gen_image, total_loss, summary = s.run([self.input_image, self.total_loss, self.summary])
 
-                    # add back the mean pixels we subtracted before
                     gen_image += self.vgg19.mean_pixels
                     writer.add_summary(summary, global_step=idx)
 
