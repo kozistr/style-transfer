@@ -13,7 +13,7 @@ content = 'deadpool'
 style = 'vangogh'
 
 
-def kargs():
+def kwargs():
     description = "Tensorflow implementation of Image Style Transfer (Neural Style)"
 
     parser = argparse.ArgumentParser(description=description)
@@ -194,7 +194,7 @@ class StyleTransfer:
 
 
 if __name__ == '__main__':
-    args = kargs()
+    args = kwargs()
     if args is None:
         exit(0)
 
