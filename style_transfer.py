@@ -47,8 +47,8 @@ class StyleTransfer:
         self.img_channel = channel
         self.input_image = None
 
-        self.content = content_image.split('/')[-1]
-        self.style = style_image.split('/')[-1]
+        self.content = content_image.split('/')[-1][:-4]
+        self.style = style_image.split('/')[-1][:-4]
 
         self.content_img = utils.image_resize(content_image, self.img_width, self.img_height, save=False)
         self.style_img = utils.image_resize(style_image, self.img_width, self.img_height, save=False)
