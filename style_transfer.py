@@ -18,9 +18,9 @@ def kwargs():
 
     parser = argparse.ArgumentParser(description=description)
 
-    parser.add_argument('--content', type=str, default='content/deadpool.jpg', required=True,
+    parser.add_argument('--content', type=str, default='contents/deadpool.jpg', required=True,
                         help='file path of content image')
-    parser.add_argument('--style', type=str, default='content/guernica.jpg', required=True,
+    parser.add_argument('--style', type=str, default='styles/guernica.jpg', required=True,
                         help='file path of style image')
 
     parser.add_argument('--content_w', type=int, default=0.05,
