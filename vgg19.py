@@ -51,12 +51,13 @@ class VGG19(object):
 
     def _get_weight(self, idx, layer_name):
         weight = self.weights[idx][0][0][2][0][0]
-        bias = self.weights[idx][0][0][2][0][1]
+        bias = self.weights[idx][0][0][2][0][1].reshape(-1)
 
         assert layer_name == self.weights[idx][0][0][0][0]
 
-        weight = np.transpose(weight, (1, 0, 2, 3))  # (h, w, in_c, out_c) to (h, w, in_c, out_c)
-        bias = bias.reshape(-1)
+        with tf.variable_scope(layer_name):
+            weight = tf.constant(weight, name='weights')
+            bias = tf.constant(bias, name='bias')
 
         return weight, bias
 
