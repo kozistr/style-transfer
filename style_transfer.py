@@ -9,7 +9,7 @@ import vgg19
 
 
 content = 'deadpool'
-style = 'guernica'
+style = 'vangogh'
 
 
 class StyleTransfer:
