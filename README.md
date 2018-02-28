@@ -59,11 +59,17 @@ Tensorflow implementation of Image Style Transfer (Neural Style)
 
 ## Sample results
 
-### DeadPool with guernica & monet & vangogh
+### DeadPool with guernica & monet & vangogh (333 x 250)
 
 *conetent\style* | *guernica* | *monet* | *vangogh*
 :---: | :---: | :---: | :---:
 **DeadPool** | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/deadpool_guernica_499.png) | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/deadpool_monet_499.png) | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/deadpool_vangogh_499.png)
+
+### stata with wave & udnie (1024 x 679)
+
+*conetent\style* | *wave* | *udnie*
+:---: | :---: | :---: |
+**Stata** | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/stata_wave_499.png) | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/stata_udnie_499.png)
 
 ## Author
 HyeongChan Kim / ([@kozistr](https://kozistr.github.io), [@zer0day](http://zer0day.tistory.com))
