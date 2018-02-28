@@ -160,7 +160,7 @@ class StyleTransfer:
 
             s.run(self.input_image.assign(self.initial_img))
 
-            ckpt = tf.train.get_checkpoint_state(os.path.dirname('./checkpoints/checkpoint'))
+            ckpt = tf.train.get_checkpoint_state(os.path.dirname('checkpoints/checkpoint'))
             if ckpt and ckpt.model_checkpoint_path:
                 saver.restore(s, ckpt.model_checkpoint_path)
 
@@ -186,11 +186,8 @@ class StyleTransfer:
 
                     start_time = time.time()
 
-                    filename = './outputs/' + self.content + '_' + self.style + '_%d.png' % idx
+                    filename = 'outputs/' + self.content + '_' + self.style + '_%d.png' % idx
                     utils.image_save(gen_image, filename)
-
-                    if (idx + 1) % 20 == 0:
-                        saver.save(s, './checkpoints/style_transfer', idx)
 
 
 if __name__ == '__main__':
