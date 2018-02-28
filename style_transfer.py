@@ -38,7 +38,7 @@ class StyleTransfer:
         self.total_loss = 0.
 
         # Hyper-Parameters
-        self.train_steps = 1e3
+        self.train_steps = 1000
         self.logging_steps = 1
         self.g_step = tf.Variable(0, trainable=False, name='global_steps')
         self.opt = None
@@ -50,7 +50,7 @@ class StyleTransfer:
     def create_input_image(self):
         # create input image 'tensor' variable
         self.input_image = tf.get_variable('input_image',
-                                           shape=(1, self.img_width, self.img_height, self.img_channel),
+                                           shape=(1, self.img_height, self.img_width, self.img_channel),
                                            initializer=tf.zeros_initializer(),
                                            dtype=tf.float32)
 
@@ -86,12 +86,12 @@ class StyleTransfer:
         with tf.Session() as s:
             s.run(self.input_image.assign(self.content_img))
 
-            gen_img_content = getattr(self.vgg19, self.content_layer[0])
+            gen_img_content = self.vgg19.vgg19_net[self.content_layer[0]]
             content_img_content = s.run(gen_img_content)
             self._content_loss(content_img_content, gen_img_content)
 
             s.run(self.input_image.assign(self.style_img))
-            style_layers = s.run([getattr(self.vgg19, layer) for layer in self.style_layers])
+            style_layers = s.run([self.vgg19.vgg19_net[layer] for layer in self.style_layers])
             self._style_loss(style_layers)
 
         self.total_loss = self.content_w * self.content_loss + self.style_w * self.style_loss
@@ -126,6 +126,8 @@ class StyleTransfer:
             s.run(tf.global_variables_initializer())
             writer = tf.summary.FileWriter('graphs', s.graph)
 
+            s.run(self.input_image.assign(self.initial_img))
+
             ckpt = tf.train.get_checkpoint_state(os.path.dirname('./checkpoints/checkpoint'))
             if ckpt and ckpt.model_checkpoint_path:
                 saver.restore(s, ckpt.model_checkpoint_path)
@@ -147,13 +149,13 @@ class StyleTransfer:
                     gen_image += self.vgg19.mean_pixels
                     writer.add_summary(summary, global_step=idx)
 
-                    print('[*] Step : {} loss : {:5.1f}'.format(idx + 1, tf.reduce_mean(total_loss)))
+                    print('[*] Step : {} loss : {:5.2f}'.format(idx + 1, total_loss))
                     print('    Took : {} seconds'.format(time.time() - start_time))
 
                     start_time = time.time()
 
                     filename = './outputs/%d.png' % idx
-                    utils.image_save(filename, gen_image)
+                    utils.image_save(gen_image, filename)
 
                     if (idx + 1) % 20 == 0:
                         saver.save(s, './checkpoints/style_transfer', idx)
