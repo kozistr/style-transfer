@@ -24,8 +24,8 @@ Tensorflow implementation of Image Style Transfer (Neural Style)
 ### Arguments
 
 *Required*
-* ```--content``` : file path of a content image, *default* : ```content/deadpool.jpg```
-* ```--style``` : file path of a style image, *default* : ```style/guernica.jpg```
+* ```--content``` : file path of a content image, *default* : ```contents/deadpool.jpg```
+* ```--style``` : file path of a style image, *default* : ```styles/guernica.jpg```
 
 *Optional*
 * ```--content_w``` : weight of content loss, *default* : ```0.05```
@@ -65,7 +65,7 @@ Tensorflow implementation of Image Style Transfer (Neural Style)
 :---: | :---: | :---: | :---:
 **DeadPool** | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/deadpool_guernica_499.png) | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/deadpool_monet_499.png) | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/deadpool_vangogh_499.png)
 
-### stata with wave & udnie (1024 x 679)
+### Stata with wave & udnie (1024 x 679)
 
 *conetent\style* | *wave* | *udnie*
 :---: | :---: | :---: |
