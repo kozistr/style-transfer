@@ -1,5 +1,5 @@
 # Style Transfer (Neural Style)
-Tensorflow implementation of Style Transfer (Neural Style)
+Tensorflow implementation of Image Style Transfer (Neural Style)
 
 ## Environments
 * OS  : Windows 10 Edu x86-64
@@ -17,7 +17,22 @@ Tensorflow implementation of Style Transfer (Neural Style)
 * Internet :) (for downloading VGG19 pre-trained model)
 
 ## Usage
-    $ python style_transfer.py
+    $ python style_transfer.py --content <content image> --style <style image> ...
+
+*Example* : ```python style_transfer.py --content content/deadpool.jpg --style style/guernica.jpg```
+
+### Arguments
+
+*Required*
+* ```--content``` : file path of a content image, default : ```content/deadpool.jpg```
+* ```--style``` : file path of a style image, default : ```style/guernica.jpg```
+
+*Optional*
+* ```--content_w``` : weight of content loss, default : ```0.05```
+* ```--style_w``` : weight of style loss, default : ```0.02```
+* ```--image_width``` : file path of a content image, default : ```333```
+* ```--image_height``` : file path of a style image, default : ```250```
+* ```--train_steps``` : total training epochs, default : ```500```
 
 ## Repo Tree
 ```
