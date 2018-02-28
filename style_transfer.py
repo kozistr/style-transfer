@@ -1,6 +1,7 @@
 # Some codes in this file was borrowed from https://github.com/chiphuyen/stanford-tensorflow-tutorials
 
 import tensorflow as tf
+import argparse
 import time
 import os
 
@@ -10,6 +11,32 @@ import vgg19
 
 content = 'deadpool'
 style = 'vangogh'
+
+
+def kargs():
+    description = "Tensorflow implementation of Image Style Transfer (Neural Style)"
+
+    parser = argparse.ArgumentParser(description=description)
+
+    parser.add_argument('--content', type=str, default='content/deadpool.jpg', required=True,
+                        help='file path of content image')
+    parser.add_argument('--style', type=str, default='content/guernica.jpg', required=True,
+                        help='file path of style image')
+
+    parser.add_argument('--content_W', type=int, default=0.05,
+                        help='weight of content loss')
+    parser.add_argument('--style_w', type=int, default=0.02,
+                        help='weight of style loss')
+
+    parser.add_argument('--image_width', type=int, default=333,
+                        help='width size of the images')
+    parser.add_argument('--image_height', type=int, default=250,
+                        help='height size of the images')
+
+    parser.add_argument('--train_steps', type=int, default=500,
+                        help='training epoch')
+
+    return parser.parse_args()
 
 
 class StyleTransfer:
@@ -167,8 +194,26 @@ class StyleTransfer:
 
 
 if __name__ == '__main__':
+    args = kargs()
+    if args is None:
+        exit(0)
+
+    image_width = args.image_width
+    image_height = args.image_height
+
+    content = args.content
+    style = args.style
+
+    content_w = args.content_w
+    style_w = args.style_w
+
+    train_steps = args.train_steps
+
     utils.setup_dir()
 
-    st = StyleTransfer('./contents/' + content + '.jpg', './styles/' + style + '.jpg')
+    st = StyleTransfer(content_image=content, style_image=style,
+                       width=image_width, height=image_height,
+                       content_w=content_w, style_w=style_w,
+                       training_steps=train_steps)
 
-    st.train()
+    st.train()  # train style-transfer
