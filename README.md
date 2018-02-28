@@ -1,5 +1,5 @@
 # Style Transfer
-Style Transfer with Tensorflow
+Image Style Transfer with Tensorflow (neural style)
 
 ## Environments
 * OS  : Windows 10 Edu x86-64
@@ -46,8 +46,9 @@ Style Transfer with Tensorflow
 
 ### DeadPool with guernica & monet & vangogh
 
-
-
+*conetent\style* | *guernica* | *monet* | *vangogh*
+:---: | :---: | :---: | :---:
+**DeadPool** | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/deadpool_guernica_499.png) | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/deadpool_monet_499.png) | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/deadpool_vangogh_499.png)
 
 ## Author
 HyeongChan Kim / ([@kozistr](https://kozistr.github.io), [@zer0day](http://zer0day.tistory.com))
