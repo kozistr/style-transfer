@@ -1,7 +1,6 @@
 # Some codes in this file was borrowed from https://github.com/chiphuyen/stanford-tensorflow-tutorials
 
 import tensorflow as tf
-import numpy as np
 import time
 import os
 
@@ -9,9 +8,15 @@ import utils
 import vgg19
 
 
+content = 'deadpool'
+style = 'guernica'
+
+
 class StyleTransfer:
 
-    def __init__(self, content_image, style_image, width=333, height=250, channel=3):
+    def __init__(self, content_image, style_image, width=333, height=250, channel=3,
+                 content_w=0.05, style_w=0.02,
+                 training_steps=500, logging_steps=1):
 
         self.img_width = width
         self.img_height = height
@@ -25,8 +30,8 @@ class StyleTransfer:
         self.content_layer = ['conv4_2']
         self.style_layers = ['conv1_1', 'conv2_1', 'conv3_1', 'conv4_1', 'conv5_1']
 
-        self.content_w = 0.05
-        self.style_w = 0.02
+        self.content_w = content_w
+        self.style_w = style_w
 
         self.content_layer_w = [1.0]
         self.style_layer_w = [0.5, 1.0, 1.5, 3.0, 4.0]  # [0.2] * 5
@@ -38,12 +43,12 @@ class StyleTransfer:
         self.total_loss = 0.
 
         # Hyper-Parameters
-        self.train_steps = 1000
-        self.logging_steps = 1
+        self.train_steps = training_steps
+        self.logging_steps = logging_steps
         self.g_step = tf.Variable(0, trainable=False, name='global_steps')
         self.opt = None
         self.summary = None
-        self.lr = 2.
+        self.lr = 1.
 
         self.build()
 
@@ -138,7 +143,7 @@ class StyleTransfer:
             for idx in range(initial_step, initial_step + self.train_steps + 1):
                 if 5 <= idx < 50:
                     self.logging_steps = 15
-                elif idx >= 20:
+                elif idx >= 50:
                     self.logging_steps = 50
 
                 s.run(self.opt)  # Train
@@ -154,7 +159,7 @@ class StyleTransfer:
 
                     start_time = time.time()
 
-                    filename = './outputs/%d.png' % idx
+                    filename = './outputs/' + content + '_' + style + '_%d.png' % idx
                     utils.image_save(gen_image, filename)
 
                     if (idx + 1) % 20 == 0:
@@ -164,6 +169,6 @@ class StyleTransfer:
 if __name__ == '__main__':
     utils.setup_dir()
 
-    st = StyleTransfer('./contents/deadpool.jpg', './styles/guernica.jpg')
+    st = StyleTransfer('./contents/' + content + '.jpg', './styles/' + style + '.jpg')
 
     st.train()
