@@ -5,7 +5,7 @@ import scipy.io
 import utils
 
 
-vgg19_file_name = 'imagenet-vgg-verydepp-19.mat'
+vgg19_file_name = 'imagenet-vgg-verydeep-19.mat'
 
 
 def conv2d_layer(input_, weights, bias):
@@ -29,7 +29,7 @@ def pool2d_layer(input_, pool='avg'):
 class VGG19(object):
 
     def __init__(self, input_image):
-        utils.vgg19_download()  # download vgg19 pre-trained model
+        utils.vgg19_download(vgg19_file_name)  # download vgg19 pre-trained model
 
         self.vgg19_layers = (
             'conv1_1', 'relu1_1', 'conv1_2', 'relu1_2', 'pool1',

@@ -6,10 +6,10 @@ import os
 
 
 vgg19_download_link = 'http://www.vlfeat.org/matconvnet/models/imagenet-vgg-verydeep-19.mat'
-vgg19_file_name = 'imagenet-vgg-verydepp-19.mat'
+vgg19_file_name = 'imagenet-vgg-verydeep-19.mat'
 
 
-def vgg19_download(file_name=vgg19_file_name, expected_bytes=534904783):
+def vgg19_download(file_name, expected_bytes=534904783):
     """ Download the pre-trained VGG-19 model if it's not already downloaded """
 
     if os.path.exists(file_name):
