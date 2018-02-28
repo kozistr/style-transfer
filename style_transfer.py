@@ -1,5 +1,6 @@
 # Some codes in this file was borrowed from https://github.com/chiphuyen/stanford-tensorflow-tutorials
 
+
 import tensorflow as tf
 import argparse
 import time
@@ -7,10 +8,6 @@ import os
 
 import utils
 import vgg19
-
-
-content = 'deadpool'
-style = 'vangogh'
 
 
 def kwargs():
@@ -41,17 +38,17 @@ def kwargs():
 
 class StyleTransfer:
 
-    def __init__(self, content_image, style_image, width=333, height=250, channel=3,
-                 content_w=0.05, style_w=0.02,
-                 training_steps=500, logging_steps=1):
+    def __init__(self, content_image, style_image, width, height, channel,
+                 content_w, style_w,
+                 training_steps, logging_steps=1):
 
         self.img_width = width
         self.img_height = height
         self.img_channel = channel
         self.input_image = None
 
-        self.content_img = utils.image_resize(content_image, self.img_width, self.img_height)
-        self.style_img = utils.image_resize(style_image, self.img_width, self.img_height)
+        self.content_img = utils.image_resize(content_image, self.img_width, self.img_height, save=False)
+        self.style_img = utils.image_resize(style_image, self.img_width, self.img_height, save=False)
         self.initial_img = utils.generate_noise_image(self.content_img, self.img_width, self.img_height)
 
         self.content_layer = ['conv4_2']
@@ -186,7 +183,7 @@ class StyleTransfer:
 
                     start_time = time.time()
 
-                    filename = './outputs/' + content + '_' + style + '_%d.png' % idx
+                    filename = './outputs/' + content.split('/')[-1] + '_' + style.split('/')[-1] + '_%d.png' % idx
                     utils.image_save(gen_image, filename)
 
                     if (idx + 1) % 20 == 0:
@@ -198,22 +195,11 @@ if __name__ == '__main__':
     if args is None:
         exit(0)
 
-    image_width = args.image_width
-    image_height = args.image_height
-
-    content = args.content
-    style = args.style
-
-    content_w = args.content_w
-    style_w = args.style_w
-
-    train_steps = args.train_steps
-
     utils.setup_dir()
 
-    st = StyleTransfer(content_image=content, style_image=style,
-                       width=image_width, height=image_height,
-                       content_w=content_w, style_w=style_w,
-                       training_steps=train_steps)
+    st = StyleTransfer(content_image=args.content, style_image=args.style,
+                       width=args.image_width, height=args.image_height, channel=3,
+                       content_w=args.content_w, style_w=args.style_w,
+                       training_steps=args.train_steps)
 
     st.train()  # train style-transfer
