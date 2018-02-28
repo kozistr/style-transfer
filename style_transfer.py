@@ -47,6 +47,9 @@ class StyleTransfer:
         self.img_channel = channel
         self.input_image = None
 
+        self.content = content_image.split('/')[-1]
+        self.style = style_image.split('/')[-1]
+
         self.content_img = utils.image_resize(content_image, self.img_width, self.img_height, save=False)
         self.style_img = utils.image_resize(style_image, self.img_width, self.img_height, save=False)
         self.initial_img = utils.generate_noise_image(self.content_img, self.img_width, self.img_height)
@@ -183,7 +186,7 @@ class StyleTransfer:
 
                     start_time = time.time()
 
-                    filename = './outputs/' + content.split('/')[-1] + '_' + style.split('/')[-1] + '_%d.png' % idx
+                    filename = './outputs/' + self.content + '_' + self.style + '_%d.png' % idx
                     utils.image_save(gen_image, filename)
 
                     if (idx + 1) % 20 == 0:
