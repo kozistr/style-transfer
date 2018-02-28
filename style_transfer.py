@@ -23,7 +23,7 @@ def kwargs():
     parser.add_argument('--style', type=str, default='content/guernica.jpg', required=True,
                         help='file path of style image')
 
-    parser.add_argument('--content_W', type=int, default=0.05,
+    parser.add_argument('--content_w', type=int, default=0.05,
                         help='weight of content loss')
     parser.add_argument('--style_w', type=int, default=0.02,
                         help='weight of style loss')
