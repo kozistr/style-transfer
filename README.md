@@ -1,5 +1,5 @@
-# Style Transfer
-Image Style Transfer with Tensorflow (neural style)
+# Style Transfer (Neural Style)
+Tensorflow implementation of Style Transfer (Neural Style)
 
 ## Environments
 * OS  : Windows 10 Edu x86-64
