@@ -61,13 +61,13 @@ Tensorflow implementation of Image Style Transfer (Neural Style)
 
 *conetent\style* | *guernica* | *monet* | *vangogh*
 :---: | :---: | :---: | :---:
-**DeadPool** | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/deadpool_guernica_499.png) | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/deadpool_monet_499.png) | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/deadpool_vangogh_499.png)
+![Generated Image](https://github.com/kozistr/style-transfer/blob/master/contents/deadpool.png) | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/deadpool_guernica_499.png) | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/deadpool_monet_499.png) | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/deadpool_vangogh_499.png)
 
 ### Stata with wave & udnie (1024 x 679)
 
 *conetent\style* | *wave* | *udnie*
 :---: | :---: | :---: |
-**Stata** | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/stata_wave_499.png) | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/stata_udnie_499.png)
+![Generated Image](https://github.com/kozistr/style-transfer/blob/master/contents/stata.png) | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/stata_wave_499.png) | ![Generated Image](https://github.com/kozistr/style-transfer/blob/master/outputs/stata_udnie_499.png)
 
 ## Author
 HyeongChan Kim / ([@kozistr](https://kozistr.github.io), [@zer0day](http://zer0day.tistory.com))
