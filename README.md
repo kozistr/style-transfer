@@ -1,19 +1,17 @@
 # Style Transfer (Neural Style)
 Tensorflow implementation of Image Style Transfer (Neural Style)
 
-## Environments
-* OS  : Windows 10 Edu x86-64
-* CPU : i7-7700K
-* GPU : GTX 1060 6GB
-* RAM : DDR4 16GB
-* Library : TF 1.5 with CUDA 9.0 + cuDNN 7.0
-* Python 3.6
+## Preferred Environments
+* OS  : Windows 10 or Ubuntu 14.04 ~
+* GPU : ~
+* Library : TF 1.x with CUDA ~ + CuDNN ~
+* Python 3.x
 
 ## Prerequisites
-* python 3.x
-* tensorflow 1.x
-* scipy
-* pillow
+* Python 3.x
+* Tensorflow 1.x
+* Scipy
+* Pillow
 * Internet :) (for downloading VGG19 pre-trained model)
 
 ## Usage
